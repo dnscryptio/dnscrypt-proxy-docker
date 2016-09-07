@@ -5,7 +5,7 @@ services:
 
 install:
   - docker build -t dnscrypt-proxy .
-  - docker run dnscrypt-proxy
+  - docker run --publish=127.0.0.1:53:53/udp dnscrypt-proxy
 
 script:
   - dig @127.0.0.1 www.google.com
