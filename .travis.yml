@@ -7,5 +7,8 @@ install:
   - docker build -t dnscrypt-proxy .
   - docker run dnscrypt-proxy
 
+before_script:
+  - apt-get install dnsutils
+
 script:
   - dig @127.0.0.1 www.google.com
