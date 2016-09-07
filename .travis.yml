@@ -4,7 +4,8 @@ services:
   - docker
 
 install:
-  - docker build -t dnscrypt-proxy-docker .
+  - docker build -t dnscrypt-proxy .
+  - docker run dnscrypt-proxy
 
 script:
-  - docker run --interactive --tty dnscrypt-proxy-docker --version
+  - dig @127.0.0.1 www.google.com

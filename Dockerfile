@@ -8,6 +8,10 @@ ENV BUILD_DEPENDENCIES \
     gcc \
     make
 
+RUN set -x && \
+    apt-get update && \
+    apt-get install -y $BUILD_DEPENDENCIES # --no-install-recommends
+
 ENV LIBSODIUM_VERSION 1.0.10
 ENV LIBSODIUM_SHA256 71b786a96dd03693672b0ca3eb77f4fb08430df307051c0d45df5353d22bc4be
 ENV LIBSODIUM_DOWNLOAD_URL https://download.libsodium.org/libsodium/releases/libsodium-${LIBSODIUM_VERSION}.tar.gz
