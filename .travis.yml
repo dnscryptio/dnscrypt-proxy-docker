@@ -10,3 +10,9 @@ install:
 script:
   - docker ps | grep -q dnscrypt-proxy
   - dig @127.0.0.1 www.google.com
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push dnscryptio/dnscrypt-proxy-docker;
+    fi
