@@ -4,8 +4,8 @@ services:
   - docker
 
 install:
-  - docker build -t dnscrypt-proxy .
-  - docker run -d -p 127.0.0.1:53:53/udp dnscrypt-proxy
+  - docker build -t dnscryptio/dnscrypt-proxy-docker .
+  - docker run -d -p 127.0.0.1:53:53/udp dnscryptio/dnscrypt-proxy-docker
 
 script:
   - docker ps | grep -q dnscrypt-proxy
