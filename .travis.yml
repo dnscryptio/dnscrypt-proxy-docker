@@ -4,8 +4,8 @@ services:
   - docker
 
 install:
-  - docker build -t dnscryptio/dnscrypt-proxy-docker .
-  - docker run -d -p 127.0.0.1:53:53/udp dnscryptio/dnscrypt-proxy-docker
+  - docker build -t dnscryptio/dnscrypt-proxy .
+  - docker run -d -p 127.0.0.1:53:53/udp dnscryptio/dnscrypt-proxy
 
 script:
   - docker ps | grep -q dnscrypt-proxy
@@ -14,5 +14,5 @@ script:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push dnscryptio/dnscrypt-proxy-docker;
+    docker push dnscryptio/dnscrypt-proxy;
     fi
