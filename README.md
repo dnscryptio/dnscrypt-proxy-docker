@@ -13,10 +13,10 @@ Start the container:
 
 The above steps will build and start the container using default settings, connecting it to dnscrypt.eu-nl server. If you would like to override this, use the following run to set variables:
 
-	docker run -d -p 127.0.0.1:53:53/udp dnscrypt-proxy \
-	-e RESOLVER_ADDR 1.1.1.1 \
-	-e PROVIDER_NAME 2.dnscrypt-cert.example.com \
-	-e PROVIDER_KEY X \
+	docker run -d -p 127.0.0.1:53:53/udp \
+	-e RESOLVER_ADDR=1.1.1.1 \
+	-e PROVIDER_NAME=2.dnscrypt-cert.example.com \
+	-e PROVIDER_KEY=X \
 	dnscrypt-proxy
 
 # Credit
