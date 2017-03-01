@@ -74,3 +74,4 @@ CMD /opt/dnscrypt-proxy/sbin/dnscrypt-proxy \
                    --loglevel=$LOGLEVEL \
                    --edns-payload-size=$EDNS_PAYLOAD_SIZE \
                    --ephemeral-keys
+#
