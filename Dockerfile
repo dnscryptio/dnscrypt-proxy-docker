@@ -14,7 +14,7 @@ RUN set -x && \
 
 ENV LIBSODIUM_VERSION 1.0.11
 ENV LIBSODIUM_SHA256 31505206b264c813869023405258bf3622a02619b69cc6028b02c4b2b8484607
-ENV LIBSODIUM_DOWNLOAD_URL https://download.libsodium.org/libsodium/releases/libsodium-${LIBSODIUM_VERSION}.tar.gz
+ENV LIBSODIUM_DOWNLOAD_URL https://github.com/jedisct1/libsodium/archive/${LIBSODIUM_VERSION}.tar.gz
 
 RUN set -x && \
     mkdir -p /tmp/src && \
@@ -31,7 +31,7 @@ RUN set -x && \
 
 ENV DNSCRYPT_PROXY_VERSION 1.9.4
 ENV DNSCRYPT_PROXY_SHA256 019f914a00230ae1f95c1c981acea30800fb342f36d29d06ecc75508f513b49d
-ENV DNSCRYPT_PROXY_DOWNLOAD_URL https://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-${DNSCRYPT_PROXY_VERSION}.tar.gz
+ENV DNSCRYPT_PROXY_DOWNLOAD_URL https://github.com/jedisct1/dnscrypt-proxy/archive/${DNSCRYPT_PROXY_VERSION}.tar.gz
 
 RUN set -x && \
     mkdir -p /tmp/src && \
