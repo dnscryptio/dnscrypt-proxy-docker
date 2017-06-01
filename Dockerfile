@@ -12,8 +12,8 @@ RUN set -x && \
     apt-get update && \
     apt-get install -y $BUILD_DEPENDENCIES # --no-install-recommends
 
-ENV LIBSODIUM_VERSION 1.0.11
-ENV LIBSODIUM_SHA256 31505206b264c813869023405258bf3622a02619b69cc6028b02c4b2b8484607
+ENV LIBSODIUM_VERSION 1.0.12
+ENV LIBSODIUM_SHA256 c5d3be2f96a2f040364037a5872af5cfd02917823b2df485e97969370d87c2ca
 ENV LIBSODIUM_DOWNLOAD_URL https://github.com/jedisct1/libsodium/archive/${LIBSODIUM_VERSION}.tar.gz
 
 RUN set -x && \
@@ -29,8 +29,8 @@ RUN set -x && \
     echo /opt/libsodium/lib > /etc/ld.so.conf.d/libsodium.conf && ldconfig && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV DNSCRYPT_PROXY_VERSION 1.9.4
-ENV DNSCRYPT_PROXY_SHA256 019f914a00230ae1f95c1c981acea30800fb342f36d29d06ecc75508f513b49d
+ENV DNSCRYPT_PROXY_VERSION 1.9.5
+ENV DNSCRYPT_PROXY_SHA256 947000568f79ab4d036b259d9cf3fe6fdf8419860d9ad18004ac767db0dbd5ac
 ENV DNSCRYPT_PROXY_DOWNLOAD_URL https://github.com/jedisct1/dnscrypt-proxy/archive/${DNSCRYPT_PROXY_VERSION}.tar.gz
 
 RUN set -x && \
