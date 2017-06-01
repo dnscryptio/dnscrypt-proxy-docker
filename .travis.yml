@@ -8,8 +8,9 @@ script:
 - docker ps | grep -q dnscrypt-proxy
 - dig @127.0.0.1 www.google.com
 after_success:
+- export REPO=dnscryptio/dnscrypt-proxy
 - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME"
-  -p="$DOCKER_PASSWORD"; docker push dnscryptio/dnscrypt-proxy; fi
+  -p="$DOCKER_PASSWORD"; docker tag $REPO $REPO:1.9.5; docker push $REPO; fi
 notifications:
   slack:
     secure: bQNdz9WsvujbhqDno6tVh1clo5Q4VK0y3sQHbiq9RyoDe4IL+uLDgJ+GCdPhg1TWNUoXE9paH0Gdhv17YgyruGHdZplSojh5WIJBACczfQxXErcwegGbVV/o6s23Q2c5+IRtz7CsqFWelx5ZuB7TCFfAsiwo/evplr2dB+VY1gmbUM8x7pLGPx623G7h+LE6SkmyzbI3zR1+78RsCZOqDX7xl58kE6AVX4T7o/HRgyflmGMHgJzmfDJ0qGb2aIdxEnV5epO6gkrhnrsYnCclrUjsOpfiRoI+Zo/gVgA04Tjgd8v1Imo21c8pBRa2umSD8214rSJvizSrn6LQWLLejvgjMWB0Pw6iZU8uuu9n2NcJNG9OkirZT1BYI/W8e6jGcbykjqr/46VRABk2/aq7S5Jz5H/swxLl2BYCTaJB7Gi0zxUi1usTFFfBu68mDTCqx6TEww0wdslWl+EkBLTdSsnJpIkw1PhuSTb0KmV26Zabze19mhTHw44+avTHKV+2qPnpi23RDJz0UFy20XZXmHvh7rA91NROJEFipIvMgF7X4wHcLop5VfUPmHXjbJcWrcSCFT1yYehAFR3QQsa/GY+g8GAJhvp6lckq1R2JtEyfTxJSrtbl4vtUbQgwO8IGIsGD4LdluNuIcXo+vnhJK3nAi5FPKmNshPpeEb1PQes=
