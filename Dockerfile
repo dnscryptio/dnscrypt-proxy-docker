@@ -12,9 +12,9 @@ RUN set -x && \
     apt-get update && \
     apt-get install -y $BUILD_DEPENDENCIES # --no-install-recommends
 
-ENV LIBSODIUM_VERSION 1.0.11
-ENV LIBSODIUM_SHA256 7ad3340938af851186318b09fe977e1bd48acc3f21068f3961afa42ed37a3a65
-ENV LIBSODIUM_DOWNLOAD_URL https://github.com/jedisct1/libsodium/archive/${LIBSODIUM_VERSION}.tar.gz
+ENV LIBSODIUM_VERSION 1.0.12
+ENV LIBSODIUM_SHA256 c5d3be2f96a2f040364037a5872af5cfd02917823b2df485e97969370d87c2ca
+ENV LIBSODIUM_DOWNLOAD_URL https://github.com/jedisct1/libsodium/releases/download/${LIBSODIUM_VERSION}/libsodium-${LIBSODIUM_VERSION}.tar.gz
 
 RUN set -x && \
     mkdir -p /tmp/src && \
@@ -31,15 +31,15 @@ RUN set -x && \
 
 ENV DNSCRYPT_PROXY_VERSION 1.9.5
 ENV DNSCRYPT_PROXY_SHA256 947000568f79ab4d036b259d9cf3fe6fdf8419860d9ad18004ac767db0dbd5ac
-ENV DNSCRYPT_PROXY_DOWNLOAD_URL https://github.com/jedisct1/dnscrypt-proxy/archive/${DNSCRYPT_PROXY_VERSION}.tar.gz
+ENV DNSCRYPT_PROXY_DOWNLOAD_URL https://github.com/jedisct1/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VERSION}/dnscrypt-proxy-${DNSCRYPT_PROXY_VERSION}.tar.bz2
 
 RUN set -x && \
     mkdir -p /tmp/src && \
     cd /tmp/src && \
-    curl -sSL $DNSCRYPT_PROXY_DOWNLOAD_URL -o dnscrypt-proxy.tar.gz && \
-    echo "${DNSCRYPT_PROXY_SHA256} *dnscrypt-proxy.tar.gz" | sha256sum -c - && \
-    tar xzf dnscrypt-proxy.tar.gz && \
-    rm -f dnscrypt-proxy.tar.gz && \
+    curl -sSL $DNSCRYPT_PROXY_DOWNLOAD_URL -o dnscrypt-proxy.tar.bz2 && \
+    echo "${DNSCRYPT_PROXY_SHA256} *dnscrypt-proxy.tar.bz2" | sha256sum -c - && \
+    tar xzf dnscrypt-proxy.tar.bz2 && \
+    rm -f dnscrypt-proxy.tar.bz2 && \
     cd dnscrypt-proxy-${DNSCRYPT_PROXY_VERSION} && \
     mkdir -p /opt/dnscrypt-proxy/empty && \
     groupadd _dnscrypt-proxy && \
