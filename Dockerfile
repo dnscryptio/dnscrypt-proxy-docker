@@ -12,8 +12,8 @@ RUN set -x && \
     apt-get update && \
     apt-get install -y $BUILD_DEPENDENCIES # --no-install-recommends
 
-ENV LIBSODIUM_VERSION 1.0.12
-ENV LIBSODIUM_SHA256 c5d3be2f96a2f040364037a5872af5cfd02917823b2df485e97969370d87c2ca
+ENV LIBSODIUM_VERSION 1.0.11
+ENV LIBSODIUM_SHA256 7ad3340938af851186318b09fe977e1bd48acc3f21068f3961afa42ed37a3a65
 ENV LIBSODIUM_DOWNLOAD_URL https://github.com/jedisct1/libsodium/archive/${LIBSODIUM_VERSION}.tar.gz
 
 RUN set -x && \
