@@ -38,7 +38,7 @@ RUN set -x && \
     cd /tmp/src && \
     curl -sSL $DNSCRYPT_PROXY_DOWNLOAD_URL -o dnscrypt-proxy.tar.bz2 && \
     echo "${DNSCRYPT_PROXY_SHA256} *dnscrypt-proxy.tar.bz2" | sha256sum -c - && \
-    tar xzf dnscrypt-proxy.tar.bz2 && \
+    tar xjf dnscrypt-proxy.tar.bz2 && \
     rm -f dnscrypt-proxy.tar.bz2 && \
     cd dnscrypt-proxy-${DNSCRYPT_PROXY_VERSION} && \
     mkdir -p /opt/dnscrypt-proxy/empty && \
