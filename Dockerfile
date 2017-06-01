@@ -30,7 +30,7 @@ RUN set -x && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV DNSCRYPT_PROXY_VERSION 1.9.5
-ENV DNSCRYPT_PROXY_SHA256 947000568f79ab4d036b259d9cf3fe6fdf8419860d9ad18004ac767db0dbd5ac
+ENV DNSCRYPT_PROXY_SHA256 e89f5b9039979ab392302faf369ef7593155d5ea21580402a75bbc46329d1bb6
 ENV DNSCRYPT_PROXY_DOWNLOAD_URL https://github.com/jedisct1/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VERSION}/dnscrypt-proxy-${DNSCRYPT_PROXY_VERSION}.tar.bz2
 
 RUN set -x && \
