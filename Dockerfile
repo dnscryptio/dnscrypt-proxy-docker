@@ -12,9 +12,9 @@ RUN set -x && \
     apt-get update && \
     apt-get install -y $BUILD_DEPENDENCIES # --no-install-recommends
 
-ENV LIBSODIUM_VERSION 1.0.10
-ENV LIBSODIUM_SHA256 71b786a96dd03693672b0ca3eb77f4fb08430df307051c0d45df5353d22bc4be
-ENV LIBSODIUM_DOWNLOAD_URL https://download.libsodium.org/libsodium/releases/libsodium-${LIBSODIUM_VERSION}.tar.gz
+ENV LIBSODIUM_VERSION 1.0.12
+ENV LIBSODIUM_SHA256 b8648f1bb3a54b0251cf4ffa4f0d76ded13977d4fa7517d988f4c902dd8e2f95
+ENV LIBSODIUM_DOWNLOAD_URL https://github.com/jedisct1/libsodium/releases/download/${LIBSODIUM_VERSION}/libsodium-${LIBSODIUM_VERSION}.tar.gz
 
 RUN set -x && \
     mkdir -p /tmp/src && \
@@ -29,17 +29,17 @@ RUN set -x && \
     echo /opt/libsodium/lib > /etc/ld.so.conf.d/libsodium.conf && ldconfig && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV DNSCRYPT_PROXY_VERSION 1.7.0
-ENV DNSCRYPT_PROXY_SHA256 be9827f66401f38fd4bdb372046eff9b5802ab5f3d188878a0dcd7bd20074c09
-ENV DNSCRYPT_PROXY_DOWNLOAD_URL https://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-${DNSCRYPT_PROXY_VERSION}.tar.gz
+ENV DNSCRYPT_PROXY_VERSION 1.9.5
+ENV DNSCRYPT_PROXY_SHA256 e89f5b9039979ab392302faf369ef7593155d5ea21580402a75bbc46329d1bb6
+ENV DNSCRYPT_PROXY_DOWNLOAD_URL https://github.com/jedisct1/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VERSION}/dnscrypt-proxy-${DNSCRYPT_PROXY_VERSION}.tar.bz2
 
 RUN set -x && \
     mkdir -p /tmp/src && \
     cd /tmp/src && \
-    curl -sSL $DNSCRYPT_PROXY_DOWNLOAD_URL -o dnscrypt-proxy.tar.gz && \
-    echo "${DNSCRYPT_PROXY_SHA256} *dnscrypt-proxy.tar.gz" | sha256sum -c - && \
-    tar xzf dnscrypt-proxy.tar.gz && \
-    rm -f dnscrypt-proxy.tar.gz && \
+    curl -sSL $DNSCRYPT_PROXY_DOWNLOAD_URL -o dnscrypt-proxy.tar.bz2 && \
+    echo "${DNSCRYPT_PROXY_SHA256} *dnscrypt-proxy.tar.bz2" | sha256sum -c - && \
+    tar xjf dnscrypt-proxy.tar.bz2 && \
+    rm -f dnscrypt-proxy.tar.bz2 && \
     cd dnscrypt-proxy-${DNSCRYPT_PROXY_VERSION} && \
     mkdir -p /opt/dnscrypt-proxy/empty && \
     groupadd _dnscrypt-proxy && \
@@ -74,3 +74,4 @@ CMD /opt/dnscrypt-proxy/sbin/dnscrypt-proxy \
                    --loglevel=$LOGLEVEL \
                    --edns-payload-size=$EDNS_PAYLOAD_SIZE \
                    --ephemeral-keys
+#
