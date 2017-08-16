@@ -73,5 +73,5 @@ CMD /opt/dnscrypt-proxy/sbin/dnscrypt-proxy \
                    --resolver-address=$RESOLVER_ADDR \
                    --loglevel=$LOGLEVEL \
                    --edns-payload-size=$EDNS_PAYLOAD_SIZE \
-                   --ephemeral-keys
-#
+                   --ephemeral-keys \
+                   /opt/dnscrypt-proxy/etc/dnscrypt-proxy.conf
